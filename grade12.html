@@ -62,6 +62,20 @@
         </div>
     </section>
 
+    
+    <!-- LIGHTBOX -->
+    <div class="lightbox-overlay" id="lightbox-overlay">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Đóng">✕</button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Hình trước">❮</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="" style="display:none;">
+            <video id="lightbox-video" src="" controls playsinline style="display:none;"></video>
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Hình tiếp">❯</button>
+        <div class="lightbox-counter" id="lightbox-counter"></div>
+    </div>
+
     <footer>
         <p>&copy; 2026 - Lớp 12A3 K41 - THPT Số 2 An Nhơn</p>
         <div class="footer-powered">POWERED BY TÌNH BẠN A3 💙</div>
@@ -106,7 +120,8 @@
                     <p>${item.desc}</p>
                 </div>
             `;
-            grid.appendChild(el);
+            el.addEventListener('click', () => openLightbox(i));
+                grid.appendChild(el);
         });
 
         document.querySelectorAll('.gallery-item.fade-in').forEach(el => {
@@ -120,6 +135,81 @@
     }
 
     document.addEventListener('DOMContentLoaded', renderGallery);
+
+    // ---- LIGHTBOX ----
+    let currentLightboxIndex = 0;
+    const overlay = document.getElementById('lightbox-overlay');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbVideo = document.getElementById('lightbox-video');
+    const lbCaption = document.getElementById('lightbox-caption');
+    const lbCounter = document.getElementById('lightbox-counter');
+
+    function openLightbox(index) {
+        currentLightboxIndex = index;
+        updateLightbox();
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        if (lbVideo) lbVideo.pause();
+    }
+
+    function updateLightbox() {
+        const item = galleryData[currentLightboxIndex];
+        
+        if (lbVideo) lbVideo.pause();
+
+        if (item.type === 'video' && item.src) {
+            if(lbImg) lbImg.style.display = 'none';
+            lbVideo.src = item.src;
+            lbVideo.style.display = 'block';
+            lbVideo.play().catch(e => console.log(e));
+        } else if (item.src) {
+            if(lbVideo) lbVideo.style.display = 'none';
+            lbImg.src = item.src;
+            lbImg.style.display = 'block';
+        } else {
+            if(lbImg) lbImg.style.display = 'none';
+            if(lbVideo) lbVideo.style.display = 'none';
+        }
+        
+        lbCaption.innerHTML = `<h3>${item.type === 'video' ? '🎬 ' : ''}${item.title}</h3><p>${item.desc}</p>`;
+        lbCounter.textContent = `${currentLightboxIndex + 1} / ${galleryData.length}`;
+    }
+
+    function nextLightbox() {
+        currentLightboxIndex = (currentLightboxIndex + 1) % galleryData.length;
+        updateLightbox();
+    }
+
+    function prevLightbox() {
+        currentLightboxIndex = (currentLightboxIndex - 1 + galleryData.length) % galleryData.length;
+        updateLightbox();
+    }
+
+    document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
+    document.getElementById('lightbox-next')?.addEventListener('click', nextLightbox);
+    document.getElementById('lightbox-prev')?.addEventListener('click', prevLightbox);
+    overlay?.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+        if (!overlay?.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextLightbox();
+        if (e.key === 'ArrowLeft') prevLightbox();
+    });
+
+    let touchStartX = 0;
+    overlay?.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    overlay?.addEventListener('touchend', (e) => {
+        if (!overlay.classList.contains('active')) return;
+        const touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) nextLightbox();
+        if (touchEndX - touchStartX > 50) prevLightbox();
+    });
+
     </script>
 </body>
 </html>
