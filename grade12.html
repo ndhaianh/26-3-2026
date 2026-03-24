@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gallery ảnh kỷ niệm lớp 12 - 12A3 K41 THPT Số 2 An Nhơn.">
+    <title>Kỷ niệm Lớp 12 - 12A3</title>
+        <link rel="stylesheet" href="styles.css">
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-container">
+            <div class="logo" style="display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:0.8rem;color:var(--primary-cyan);">A3</div>
+            <span class="logo-text">12A3<span class="highlight">_K41</span></span>
+        </a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">☰</button>
+                <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="about.html">Giới thiệu</a></li>
+            <li><a href="members.html">Thành viên</a></li>
+            <li class="nav-item-dropdown">
+                <a href="grade10.html" class="active">Hoạt động</a>
+                <div class="nav-dropdown">
+                    <a href="grade10.html">📸 Lớp 10</a>
+                    <a href="grade11.html">🎞️ Lớp 11</a>
+                    <a href="grade12.html" class="active">🎓 Lớp 12</a>
+                </div>
+            </li>
+            <li><a href="index.html#messages">Trạm tín hiệu</a></li>
+            <li><a href="#" class="theme-toggle" title="Đổi giao diện Sáng/Tối">🌓 Giao diện</a></li>
+        </ul>
+    </nav>
+
+    <header class="section about-hero" style="min-height:50vh;">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="LỚP 12">LỚP 12</h1>
+            <p class="subtitle">NĂM HỌC 2025 - 2026 • RỒI SẼ NHỚ TỮNG KHOẢNH KHẮC</p>
+        </div>
+    </header>
+
+    <section class="section section-compact" style="padding-top: 20px;">
+        <div class="grade-nav">
+            <a href="grade10.html" class="toc-btn">Lớp 10</a>
+            <a href="grade11.html" class="toc-btn">Lớp 11</a>
+            <a href="grade12.html" class="toc-btn active">Lớp 12</a>
+        </div>
+
+        <h2 class="section-title">Gallery <span class="highlight">Ảnh</span></h2>
+        <p class="section-desc">Năm cuối cấp — mỗi khoảnh khắc đều đáng giá, vì không biết có còn bao giờ được như thế nữa. Thêm ảnh/video vào mảng bên dưới.</p>
+
+        <div class="gallery-grid" id="gallery-grid"></div>
+
+        <div class="text-center mt-3 bottom-nav-section">
+            <a href="members.html" class="cyber-btn">XEM CÁC THÀNH VIÊN</a>
+            <a href="index.html" class="cyber-btn btn-pink">⟵ VỀ TRANG CHỦ</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - Lớp 12A3 K41 - THPT Số 2 An Nhơn</p>
+        <div class="footer-powered">POWERED BY TÌNH BẠN A3 💙</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/heic-to@1/dist/heic-to.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+    const galleryData = [
+        { title: "Ngày 26/3", desc: "Kỷ niệm ngày thành lập Đoàn — một trong những hoạt động cuối cùng của thời học sinh." },
+        { title: "Cuộc thi Thanh niên Thời đại số", desc: "Lớp mình tham gia theo phong cách A3 — nhiệt huyết và hơi điên." },
+        { title: "Lễ trưởng thành", desc: "Buổi lễ trưởng thành — khoaảnh khắc ai cũng rơm rớm." },
+        { title: "Ôn thi tốt nghiệp", desc: "Những ngày cùng nhau ôn bài — mệt nhưng vẫn cười vì có nhau." },
+        { title: "Chia tay cuối cấp", desc: "Bữa tiệc chia tay — nước mắt và nụ cười hòa làm một." },
+        { title: "Ngày ra trường", desc: "Ngày cuối cùng bước chân qua cổng trường thân yêu — hẹn gặp lại." },
+        { title: "Họp lớp", desc: "Hẹn nhau ngày gặp lại — vì A3 mãi là gia đình. 💙" },
+        { title: "Kỷ niệm đặc biệt", desc: "Những khoảnh khắc không thể nào quên của 12A3." },
+    ];
+
+    function renderGallery() {
+        const grid = document.getElementById('gallery-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        
+        galleryData.forEach((item, i) => {
+            const el = document.createElement('div');
+            el.className = 'gallery-item fade-in';
+            
+            let mediaHTML;
+            if (item.type === 'video' && item.src) {
+                mediaHTML = `<video src="${item.src}" controls muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;"></video>`;
+            } else if (item.src) {
+                mediaHTML = `<img src="${item.src}" alt="${item.title}" loading="lazy">`;
+            } else {
+                mediaHTML = `<div class="gallery-img-placeholder">${item.type === 'video' ? '🎬' : '📷'}<br>[${item.type === 'video' ? 'VIDEO' : 'IMG'}_${String(i+1).padStart(2,'0')}]<br>Thêm ${item.type === 'video' ? 'video' : 'ảnh'} vào đây</div>`;
+            }
+            
+            el.innerHTML = `
+                <div class="gallery-img-wrapper">${mediaHTML}</div>
+                <div class="gallery-caption">
+                    <h3>${item.type === 'video' ? '🎬 ' : ''}${item.title}</h3>
+                    <p>${item.desc}</p>
+                </div>
+            `;
+            grid.appendChild(el);
+        });
+
+        document.querySelectorAll('.gallery-item.fade-in').forEach(el => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
+            observer.observe(el);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderGallery);
+    </script>
+</body>
+</html>

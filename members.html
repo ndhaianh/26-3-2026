@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Danh sách 45 thành viên lớp 12A3 K41 chia theo 4 Tổ.">
+    <title>Thành viên - 12A3</title>
+        <link rel="stylesheet" href="styles.css">
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-container">
+            <div class="logo"
+                style="display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:0.8rem;color:var(--primary-cyan);">
+                A3</div>
+            <span class="logo-text">12A3<span class="highlight">_K41</span></span>
+        </a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">☰</button>
+                <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="about.html">Giới thiệu</a></li>
+            <li><a href="members.html" class="active">Thành viên</a></li>
+            <li class="nav-item-dropdown">
+                <a href="grade10.html">Hoạt động</a>
+                <div class="nav-dropdown">
+                    <a href="grade10.html">📸 Lớp 10</a>
+                    <a href="grade11.html">🎞️ Lớp 11</a>
+                    <a href="grade12.html">🎓 Lớp 12</a>
+                </div>
+            </li>
+            <li><a href="index.html#messages">Trạm tín hiệu</a></li>
+            <li><a href="#" class="theme-toggle" title="Đổi giao diện Sáng/Tối">🌓 Giao diện</a></li>
+        </ul>
+    </nav>
+
+    <header class="section about-hero" style="min-height:60vh;">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="THÀNH VIÊN">THÀNH VIÊN</h1>
+            <p class="subtitle">45 THÀNH VIÊN • 4 TỔ • 1 GIA ĐÌNH</p>
+        </div>
+    </header>
+
+    <section class="section section-compact" style="padding-top: 40px;">
+        <!-- Sub-menu chuyển nhanh giữa 4 Tổ -->
+        <div class="toc-nav" id="toc-nav">
+            <a href="#to-1" class="toc-btn active">Tổ 1</a>
+            <a href="#to-2" class="toc-btn">Tổ 2</a>
+            <a href="#to-3" class="toc-btn">Tổ 3</a>
+            <a href="#to-4" class="toc-btn">Tổ 4</a>
+        </div>
+
+        <!-- TỔ 1 -->
+        <div class="group-section" id="to-1">
+            <h2 class="group-title-centered">⚡ Tổ 1 - Biệt Đội Tiên Phong</h2>
+            <div class="group-intro fade-in">
+                <div class="group-img-wrapper">
+                    <img src="assets/groups/to1.jpg" alt="Đội hình Tổ 1" loading="lazy"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="group-img-placeholder">📷 Dữ liệu ảnh Tổ 1</div>
+                </div>
+                <div class="group-info">
+                    <p class="group-desc">Luôn mặn mòi, luôn ồn ào nhưng lại sống cực kỳ tình cảm. Tổ 1 là tập hợp của
+                        những cái đầu sáng tạo nhất lớp, đi đầu trong những trò quậy phá cũng như mũi nhọn lúc săn điểm.
+                        Nếu 12A3 là một bộ phim, thì Tổ 1 chắc chắn là dàn cast chính mang đầy năng lượng tích cực! 🌟
+                    </p>
+                </div>
+            </div>
+            <div class="members-grid" id="members-to-1"></div>
+        </div>
+
+        <!-- TỔ 2 -->
+        <div class="group-section" id="to-2">
+            <h2 class="group-title-centered">🔥 Tổ 2 - Nhiệt Huyết Rực Rỡ</h2>
+            <div class="group-intro fade-in">
+                <div class="group-img-wrapper">
+                    <img src="assets/groups/to2.jpg" alt="Đội hình Tổ 2" loading="lazy"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="group-img-placeholder">📷 Dữ liệu ảnh Tổ 2</div>
+                </div>
+                <div class="group-info">
+                    <p class="group-desc">Mang trong mình ngọn lửa nhiệt huyết không bao giờ tắt. Tổ 2 chẳng ngán bất kỳ
+                        "mặt trận" nào, từ bài tập hóc búa đến những giải đấu thể thao. Ở cạnh Tổ 2, bạn sẽ không bao
+                        giờ cảm thấy buồn chán vì luôn có những "cây hài" túc trực mọi lúc. 🔥</p>
+                </div>
+            </div>
+            <div class="members-grid" id="members-to-2"></div>
+        </div>
+
+        <!-- TỔ 3 -->
+        <div class="group-section" id="to-3">
+            <h2 class="group-title-centered">💎 Tổ 3 - Trầm Ổn Mà Đáng Yêu</h2>
+            <div class="group-intro fade-in">
+                <div class="group-img-wrapper">
+                    <img src="assets/groups/to3.jpg" alt="Đội hình Tổ 3" loading="lazy"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="group-img-placeholder">📷 Dữ liệu ảnh Tổ 3</div>
+                </div>
+                <div class="group-info">
+                    <p class="group-desc">Có vẻ ngoài khá hiền lành và trầm tính (ít nhất là khi mới gặp), nhưng chơi
+                        thân rồi mới biết độ lầy lội không thua ai. Tổ 3 như những viên kim cương, toả sáng theo một
+                        cách rất riêng, lúc nào cũng tỉ mỉ, chu đáo và là điểm tựa đáng tin cậy của cả lớp. 💎</p>
+                </div>
+            </div>
+            <div class="members-grid" id="members-to-3"></div>
+        </div>
+
+        <!-- TỔ 4 -->
+        <div class="group-section" id="to-4">
+            <h2 class="group-title-centered">🚀 Tổ 4 - Bứt Phá Đỉnh Cao</h2>
+            <div class="group-intro fade-in">
+                <div class="group-img-wrapper">
+                    <img src="assets/groups/to4.jpg" alt="Đội hình Tổ 4" loading="lazy"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="group-img-placeholder">📷 Dữ liệu ảnh Tổ 4</div>
+                </div>
+                <div class="group-info">
+                    <p class="group-desc">Tổ 4 chốt sổ với ngập tràn những gương mặt đầy tiềm năng. Đôi lúc hay cãi nhau
+                        chí chóe nhưng đến khi cần là đoàn kết không ai bằng. Những năm tháng học trò đã gắn kết những
+                        cá nhân khác biệt thành một mảnh ghép không thể thiếu của gia đình 12A3. 🚀</p>
+                </div>
+            </div>
+            <div class="members-grid" id="members-to-4"></div>
+        </div>
+
+        <div class="bottom-nav-section mt-3">
+            <a href="grade10.html" class="cyber-btn btn-pink">XEM CÁC HOẠT ĐỘNG</a>
+        </div>
+    </section>
+
+    <!-- Floating Group Navigator -->
+    <div class="floating-group-nav" id="floating-group-nav">
+        <button class="floating-nav-btn" id="float-up" aria-label="Tổ trước">▲</button>
+        <div class="group-indicator">
+            <div class="group-indicator-value" id="float-current">01</div>
+            <div class="group-indicator-label">TỔ</div>
+        </div>
+        <button class="floating-nav-btn" id="float-down" aria-label="Tổ tiếp">▼</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - Lớp 12A3 K41 - THPT Số 2 An Nhơn</p>
+        <div class="footer-powered">POWERED BY TÌNH BẠN A3 💙</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/heic-to@1/dist/heic-to.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // ==================== DANH SÁCH THÀNH VIÊN ====================
+        // 📌 HƯỚNG DẪN: Thay tên thành viên vào mảng bên dưới.
+        // Mỗi thành viên: { name: "Tên", link: "https://facebook.com/...", avatar: "đường dẫn ảnh", note: "ghi chú (tùy chọn)" }
+        // Nếu có "link", nhấp vào tên sẽ mở trang Facebook. Nếu không có ảnh, sẽ hiển thị icon placeholder.
+
+        const membersData = {
+            1: [
+                { name: "Thành viên 1", link: "https://facebook.com/thanhvien1", note: "Tổ trưởng" },
+                { name: "Thành viên 2", link: "https://facebook.com/thanhvien2" },
+                { name: "Thành viên 3" },
+                { name: "Thành viên 4" },
+                { name: "Thành viên 5" },
+                { name: "Thành viên 6" },
+                { name: "Thành viên 7" },
+                { name: "Thành viên 8" },
+                { name: "Thành viên 9" },
+                { name: "Thành viên 10" },
+                { name: "Thành viên 11" },
+            ],
+            2: [
+                { name: "Thành viên 12", link: "https://facebook.com/thanhvien12", note: "Tổ trưởng" },
+                { name: "Thành viên 13", link: "https://facebook.com/thanhvien13" },
+                { name: "Thành viên 14" },
+                { name: "Thành viên 15" },
+                { name: "Thành viên 16" },
+                { name: "Thành viên 17" },
+                { name: "Thành viên 18" },
+                { name: "Thành viên 19" },
+                { name: "Thành viên 20" },
+                { name: "Thành viên 21" },
+                { name: "Thành viên 22" },
+                { name: "Thành viên 23" },
+            ],
+            3: [
+                { name: "Thành viên 24", link: "https://facebook.com/thanhvien24", note: "Tổ trưởng" },
+                { name: "Thành viên 25", link: "https://facebook.com/thanhvien25" },
+                { name: "Thành viên 26" },
+                { name: "Thành viên 27" },
+                { name: "Thành viên 28" },
+                { name: "Thành viên 29" },
+                { name: "Thành viên 30" },
+                { name: "Thành viên 31" },
+                { name: "Thành viên 32" },
+                { name: "Thành viên 33" },
+                { name: "Thành viên 34" },
+            ],
+            4: [
+                { name: "Thành viên 35", link: "https://facebook.com/thanhvien35", note: "Tổ trưởng" },
+                { name: "Thành viên 36", link: "https://facebook.com/thanhvien36" },
+                { name: "Thành viên 37" },
+                { name: "Thành viên 38" },
+                { name: "Thành viên 39" },
+                { name: "Thành viên 40" },
+                { name: "Thành viên 41" },
+                { name: "Thành viên 42" },
+                { name: "Thành viên 43" },
+                { name: "Thành viên 44" },
+                { name: "Thành viên 45" },
+            ]
+        };
+
+        // Render member cards
+        function renderMembers() {
+            let stt = 1;
+            for (const [group, members] of Object.entries(membersData)) {
+                const container = document.getElementById(`members-to-${group}`);
+                if (!container) continue;
+                container.innerHTML = '';
+                members.forEach(member => {
+                    const card = document.createElement('div');
+                    card.className = 'member-card fade-in';
+
+                    card.innerHTML = `
+                    <div class="member-info">
+                        <div class="member-name">
+                            ${member.link ? `<a href="${member.link}" target="_blank" class="member-name-link" title="Ghé trang Facebook cá nhân">${member.name} 🔗</a>` : member.name}
+                        </div>
+                        <div class="member-note">${member.note || '—'}</div>
+                    </div>
+                `;
+                    container.appendChild(card);
+                    stt++;
+                });
+            }
+
+            // Re-observe for fade-in animation
+            document.querySelectorAll('.member-card.fade-in').forEach(el => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) entry.target.classList.add('visible');
+                    });
+                }, { threshold: 0.1 });
+                observer.observe(el);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', renderMembers);
+
+        // TOC nav & Floating group nav
+        const tocBtns = document.querySelectorAll('.toc-btn');
+        const groupSections = document.querySelectorAll('.group-section');
+        const groupNames = ['01', '02', '03', '04'];
+        let currentGroupIdx = 0;
+
+        const floatCurrent = document.getElementById('float-current');
+        const floatUp = document.getElementById('float-up');
+        const floatDown = document.getElementById('float-down');
+
+        function updateFloatingNav(idx) {
+            currentGroupIdx = idx;
+            if (floatCurrent) floatCurrent.textContent = groupNames[idx] || 'Tổ 1';
+            if (floatUp) floatUp.disabled = idx <= 0;
+            // Cho phép ấn xuống khi ở tổ cuối cùng để cuộn xuống cuối trang
+            if (floatDown) floatDown.disabled = false; 
+        }
+
+        if (tocBtns.length && groupSections.length) {
+            const tocObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        const idx = Array.from(groupSections).findIndex(s => s.id === id);
+                        tocBtns.forEach(btn => {
+                            btn.classList.toggle('active', btn.getAttribute('href') === `#${id}`);
+                        });
+                        if (idx >= 0) updateFloatingNav(idx);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            groupSections.forEach(s => tocObserver.observe(s));
+        }
+
+        // Mũi tên nổi (Floating nav)
+        if (floatUp) floatUp.addEventListener('click', () => {
+            if (currentGroupIdx > 0) {
+                groupSections[currentGroupIdx - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+        if (floatDown) floatDown.addEventListener('click', () => {
+            if (currentGroupIdx < groupSections.length - 1) {
+                groupSections[currentGroupIdx + 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                // Đã ở tổ 4 -> Cuộn xuống cuối trang
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }
+        });
+
+        updateFloatingNav(0);
+
+        // Smooth scroll for TOC
+        tocBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(btn.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

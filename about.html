@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Về lớp 12A3 K41 - THPT Số 2 An Nhơn. Câu chuyện của chúng mình.">
+    <title>Về chúng mình - 12A3</title>
+        <link rel="stylesheet" href="styles.css">
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-container">
+            <div class="logo" style="display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:0.8rem;color:var(--primary-cyan);">A3</div>
+            <span class="logo-text">12A3<span class="highlight">_K41</span></span>
+        </a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">☰</button>
+                <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="about.html" class="active">Giới thiệu</a></li>
+            <li><a href="members.html">Thành viên</a></li>
+            <li class="nav-item-dropdown">
+                <a href="grade10.html">Hoạt động</a>
+                <div class="nav-dropdown">
+                    <a href="grade10.html">📸 Lớp 10</a>
+                    <a href="grade11.html">🎞️ Lớp 11</a>
+                    <a href="grade12.html">🎓 Lớp 12</a>
+                </div>
+            </li>
+            <li><a href="index.html#messages">Trạm tín hiệu</a></li>
+            <li><a href="#" class="theme-toggle" title="Đổi giao diện Sáng/Tối">🌓 Giao diện</a></li>
+        </ul>
+    </nav>
+
+    <header class="section about-hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="VỀ CHÚNG MÌNH">VỀ CHÚNG MÌNH</h1>
+            <p class="subtitle">CÂU CHUYỆN CỦA LỚP 12A3 • K41 • THPT SỐ 2 AN NHƠN</p>
+        </div>
+    </header>
+
+    <section class="section section-compact">
+        <div class="about-content">
+            <!-- Thông tin lớp -->
+            <div class="about-block fade-in">
+                <h3>🌸 Về lớp 12A3</h3>
+                <p>
+                    Lớp 12A3 khóa 41 — hay còn gọi là <strong>"Bột giặt A3"</strong> — là một tập thể gồm 
+                    <strong>45 thành viên</strong> (33 nam, 12 nữ) đến từ trường THPT Số 2 An Nhơn, Bình Định.
+                </p>
+                <br>
+                <p>
+                    Ba năm cấp 3, tại mình còn không biết thời gian trôi nhanh như vậy. Mới hôm qua còn bỡ ngỡ 
+                    bước vào lớp, chưa biết ai là ai. Mà giờ thì đã sắp chia tay. Những giờ học căng thẳng, những buổi 
+                    sinh hoạt cuối tuần, những lần cười đến đau bụng giữa giờ ra chơi — tất cả đã làm nên thanh xuân của 
+                    tụi mình.
+                </p>
+                <br>
+                <p>
+                    Trang web này được xây dựng như một cuốn sổ lưu bút kỹ thuật số — nơi để sau này, khi lỡ nhớ nhau, 
+                    chỉ cần mở lên là thấy lại tất cả. Thấy lại những khuôn mặt thân thương, những kỷ niệm tưởng đã 
+                    quên mà không bao giờ quên được. 💙
+                </p>
+            </div>
+
+            <!-- Thông tin GVCN -->
+            <div class="about-block fade-in" style="border-color: var(--glass-border-pink);">
+                <div class="teacher-profile">
+                    <div class="teacher-avatar" style="display:flex;align-items:center;justify-content:center;font-size:3rem;">👑</div>
+                    <div class="teacher-info">
+                        <h3>Thầy Đào Mạnh Hồ</h3>
+                        <p><strong>Chức vụ:</strong> Giáo viên chủ nhiệm</p>
+                        <p><strong>Trường:</strong> THPT Số 2 An Nhơn, Bình Định</p>
+                        <p style="margin-top: 10px;">
+                            Nếu lớp mình là một con tàu thì thầy chính là người thuyền trưởng. 
+                            Suốt 3 năm, thầy đã là người lo lắng cho từng đứa, từ chuyện học hành đến 
+                            chuyện tình cảm (nói nhỏ thôi 😄). Cảm ơn thầy đã không bỏ cuộc, đã luôn tin 
+                            tưởng vào tụi mình ngay cả khi tụi mình chưa tin vào chính bản thân. 💚
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thông tin trường -->
+            <div class="about-block fade-in">
+                <h3>🏫 THPT Số 2 An Nhơn</h3>
+                <p>
+                    Ngôi trường thân yêu của tụi mình — nơi đã chứng kiến tất cả. Từ những buổi sáng 
+                    vội vã chạy vào lớp cho kịp giờ, đến những chiều ngồi trên hành lang nhìn mưa rơi. 
+                    Từ những tiết học truy bài run rẩy, đến những giờ ra chơi chạy nhảy đuổi nhau. 
+                    Tất cả đều xảy ra ở đây — và sẽ mãi ở lại đây, trong trái tim của từng đứa. 🌿
+                </p>
+            </div>
+
+            <!-- ========== BỘ SƯU TẬP ẢNH NỔI BẬT ========== -->
+            <div class="showcase-section fade-in" id="gallery-showcase">
+                <h3>📸 Bộ Sưu Tập Nổi Bật</h3>
+                <p class="showcase-desc">Những khoảnh khắc đáng nhớ nhất của tập thể lớp 12A3.</p>
+                <div class="showcase-grid" id="showcase-grid">
+                    <!-- JS sẽ render ảnh vào đây -->
+                </div>
+            </div>
+
+            <!-- Thống kê nhanh -->
+            <div class="stats-grid mt-3 fade-in">
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-number" style="font-size:2rem;">2023-2026</div>
+                    <div class="stat-label">Niên khóa</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-number" data-count="3">0</div>
+                    <div class="stat-label">Năm gắn bó</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💫</div>
+                    <div class="stat-number" data-count="45">0</div>
+                    <div class="stat-label">Thành viên</div>
+                </div>
+                <div class="stat-card gvcn-card">
+                    <div class="stat-icon">♾️</div>
+                    <div class="stat-number teacher-name" style="font-size:1.5rem;">Vô hạn</div>
+                    <div class="stat-label">Kỷ niệm</div>
+                </div>
+            </div>
+
+            <div class="text-center mt-3 bottom-nav-section">
+                <a href="members.html" class="cyber-btn">XEM DANH SÁCH THÀNH VIÊN</a>
+                <a href="grade10.html" class="cyber-btn btn-pink">XEM CÁC HOẠT ĐỘNG</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox-overlay" id="lightbox-overlay">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Đóng">✕</button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Ảnh trước">❮</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Ảnh tiếp">❯</button>
+        <div class="lightbox-counter" id="lightbox-counter"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - Lớp 12A3 K41 - THPT Số 2 An Nhơn</p>
+        <div class="footer-powered">POWERED BY TÌNH BẠN A3 💙</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/heic-to@1/dist/heic-to.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+    // 📌 BỘ SƯU TẬP NỔI BẬT - Thay placeholder bằng ảnh thật
+    // Format: { src: "assets/gallery/ten-anh.jpg", title: "Tiêu đề", tag: "Tag" }
+    const showcaseData = [
+        { title: "Ngày đầu tiên nhập học", tag: "Lớp 10", emoji: "🏫" },
+        { title: "Lễ khai giảng", tag: "Lớp 10", emoji: "🎊" },
+        { title: "Hội thao toàn trường", tag: "Lớp 11", emoji: "⚽" },
+        { title: "Cắm trại 26/3", tag: "Lớp 11", emoji: "⛺" },
+        { title: "Ngày 20/11", tag: "Lớp 12", emoji: "🌹" },
+        { title: "Chụp kỷ yếu", tag: "Lớp 12", emoji: "📷" },
+        { title: "Sinh nhật lớp", tag: "Lớp 12", emoji: "🎂" },
+        { title: "Khoảnh khắc cuối cùng", tag: "Lớp 12", emoji: "💫" },
+    ];
+
+    function renderShowcase() {
+        const grid = document.getElementById('showcase-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        showcaseData.forEach((item, i) => {
+            const el = document.createElement('div');
+            el.className = 'showcase-item fade-in';
+            el.style.animationDelay = `${i * 0.08}s`;
+            el.dataset.index = i;
+
+            const imgHTML = item.src
+                ? `<img src="${item.src}" alt="${item.title}" loading="lazy">`
+                : `<div class="showcase-placeholder">${item.emoji}<br><span>Thêm ảnh</span></div>`;
+
+            el.innerHTML = `
+                <div class="showcase-img">${imgHTML}</div>
+                <div class="showcase-overlay">
+                    <span class="showcase-tag">${item.tag}</span>
+                    <h4>${item.title}</h4>
+                </div>
+            `;
+
+            el.addEventListener('click', () => openLightbox(i));
+            grid.appendChild(el);
+        });
+
+        // Trigger fade-in observer
+        grid.querySelectorAll('.fade-in').forEach(el => {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+            }, { threshold: 0.1 });
+            obs.observe(el);
+        });
+    }
+
+    // ---- LIGHTBOX ----
+    let currentLightboxIndex = 0;
+    const overlay = document.getElementById('lightbox-overlay');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCaption = document.getElementById('lightbox-caption');
+    const lbCounter = document.getElementById('lightbox-counter');
+
+    function openLightbox(index) {
+        currentLightboxIndex = index;
+        updateLightbox();
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function updateLightbox() {
+        const item = showcaseData[currentLightboxIndex];
+        if (item.src) {
+            lbImg.src = item.src;
+            lbImg.style.display = 'block';
+        } else {
+            lbImg.src = '';
+            lbImg.style.display = 'none';
+        }
+        lbCaption.textContent = `${item.emoji} ${item.title} — ${item.tag}`;
+        lbCounter.textContent = `${currentLightboxIndex + 1} / ${showcaseData.length}`;
+    }
+
+    function nextLightbox() {
+        currentLightboxIndex = (currentLightboxIndex + 1) % showcaseData.length;
+        updateLightbox();
+    }
+
+    function prevLightbox() {
+        currentLightboxIndex = (currentLightboxIndex - 1 + showcaseData.length) % showcaseData.length;
+        updateLightbox();
+    }
+
+    document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
+    document.getElementById('lightbox-next')?.addEventListener('click', nextLightbox);
+    document.getElementById('lightbox-prev')?.addEventListener('click', prevLightbox);
+    overlay?.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+        if (!overlay?.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextLightbox();
+        if (e.key === 'ArrowLeft') prevLightbox();
+    });
+
+    // Swipe support for lightbox on mobile
+    let touchStartX = 0;
+    overlay?.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    overlay?.addEventListener('touchend', (e) => {
+        const diff = e.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(diff) > 50) { diff > 0 ? prevLightbox() : nextLightbox(); }
+    }, { passive: true });
+
+    document.addEventListener('DOMContentLoaded', renderShowcase);
+    </script>
+</body>
+</html>
